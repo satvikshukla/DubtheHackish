@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<title>securesteps</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale:1.0, maximum-scale=1.0">
+<meta charset="utf-8">
+<meta property="og:type" content="website">
+<meta property="og:title" content=" HomeSafe - Take the safest route to your destination">
+<meta property="og:descritpion" content=" HomeSafe - Take the safest route to your desitination ">
+<meta property="og:url" content=" ">
+<meta name="description" content="HomeSafe,Seattle,College,Campus,travel,walking,routes,destination,safety,precaution,new,udistrict,">
+<meta name="author" content="DubHacks Dream Team 2017">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/fun.js"></script>
+</head>
+    <body>
+        <header>
+            <div class="directions">
+                <h1 id="title">Secure Steps - Take the safest route home</h1>
+                 <div class="searchBar">
+                    <div id="controls">
+                      <label><span>From:</span> <input type="text" name="from" id="t1"></label>
+                      <label><span>To:</span> <input type="text" name="to" id="t2"></label> <button id="button"> Submit </button>
+                      <img src="logo.png" width="3%" height="3%" alt="Logo"/>
+                      <p></p>
+                     </div>
+                  </div>
+            </div>
+          </header>
+
+
+    <div id="map"></map>
+
+            </div>
+        </header>
+        <div class="theMain">
+            <div class="left-map">
+                <div id='printoutPanel'></div>
+            </div>
+
+       <div id='myMap' style='width: 90vw; height: 100vh;'></div>
+       <script type='text/javascript'>
+           function loadMapScenario() {
+               var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+                   credentials: 'At7Ns-P4IRo5GYhksVu0OlEiis4GatW1SfUkwEvNKZ5t3_x--f83MAutefAloU0x',
+                   center: new Microsoft.Maps.Location(47.606209, -122.332071),
+                   zoom: 12
+               });
+               Microsoft.Maps.loadModule('Microsoft.Maps.Directions', function () {
+                   var directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+                   // Set Route Mode to walking
+                   directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.walking });
+                   var waypoint1 = new Microsoft.Maps.Directions.Waypoint({ address: 'Space Needle' });
+                   var waypoint2 = new Microsoft.Maps.Directions.Waypoint({ address: 'Pike Market, Washington' });
+                   directionsManager.addWaypoint(waypoint1);
+                   directionsManager.addWaypoint(waypoint2);
+                   // Set the element in which the itinerary will be rendered
+                   directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('printoutPanel') });
+                   directionsManager.calculateDirections();
+               });
+
+           }
+       </script>
+       <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=loadMapScenario' async defer></script>
+
+        </div>
+    </body>
+</html>
